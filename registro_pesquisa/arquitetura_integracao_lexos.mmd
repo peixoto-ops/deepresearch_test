@@ -1,0 +1,35 @@
+graph TD
+    subgraph "Interface do Usuário / Orquestrador"
+        UI[Input do Usuário: Tema Jurídico]
+    end
+
+    subgraph "LEX OS Server (Middleware)"
+        OM[Módulo de Orquestração]
+        MM[Módulo de Memória: Obsidian First]
+        EP[Módulo de Execução: Fabric Wrapper]
+    end
+
+    subgraph "Pipeline de Pesquisa Adversarial"
+        DRA[Pattern: Deep Research Architect]
+        SR[Busca Externa: --search]
+        AP[Análise de Anti-Consonância]
+        ST[Stress Test: Cenários Judiciais]
+    end
+
+    subgraph "Persistência e Saída"
+        OB[Vault do Obsidian: Notas de Metodologia]
+        ZT[Zotero: Referências ABNT]
+        FP[Prompt Final Estruturado]
+    end
+
+    UI --> OM
+    OM --> MM
+    MM -- "Não encontrado" --> EP
+    EP --> DRA
+    DRA --> SR
+    SR --> AP
+    AP --> ST
+    ST --> OB
+    ST --> ZT
+    ST --> FP
+    FP --> |"Alimenta"| LA[Pattern: Legal Analysis / Thesis Builder]
